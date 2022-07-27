@@ -5,4 +5,48 @@
 <ul id="list"></ul>
 <button id="random">random facilitator</button>
 <p id="randomname"></p>
+  <script>var list, item;
+
+function getNumberOrString(value) {
+  // Convert a string value to a number if possible
+  let number_value = Number(value);
+  if (Number.isNaN(number_value)) {
+    return value
+  } else {
+    return number_value
+  }
+}
+
+function randomInt(n) {
+  // Return a random number from in [0, n[
+  return Math.floor(Math.random()*n);
+}
+
+function randomMember(arr) {
+  // Return a random member of the array
+  return arr[randomInt(arr.length)]
+}
+
+
+list = [];
+
+
+document.getElementById('submit').addEventListener('click', (event) => {
+  let element_names = document.getElementById('names');
+  list.unshift(getNumberOrString(document.getElementById('names').value));
+  let element_list = document.getElementById('list');
+  let new_li = document.createElement('li');
+  list.forEach((item) => {
+    new_li.innerText = list[0];
+  });
+
+  element_list.appendChild(new_li);
+
+});
+
+document.getElementById('random').addEventListener('click', (event) => {
+  let element_randomname = document.getElementById('randomname');
+  element_randomname.innerText = randomMember(list);
+
+});</script>
 </html>
